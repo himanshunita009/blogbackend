@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const databaseURI = "mongodb+srv://himanshunita009:seth123@cluster0.6etnfiw.mongodb.net/?retryWrites=true&w=majority";
+const databaseURI = process.env.DATABASE;
 mongoose.connect(databaseURI).then(() => {
     console.log("Database connected");
 }).catch((err) =>{

@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const SECRETKEY = process.env.SECRET_KEY
 const auth = async (req,res,next) => {
     if(!req.cookies.jwt || req.cookies.jwt === 'undefined'){
         res.json({
@@ -6,7 +7,7 @@ const auth = async (req,res,next) => {
         });
       }
     else {
-        const isValid = jwt.verify(req.cookies.jwt,process.env.SECRET_KEY);
+        const isValid = jwt.verify(req.cookies.jwt,SECRETKEY);
         if(isValid){
             req.userId = isValid._id;
             next();
