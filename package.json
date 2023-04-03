@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www",
+    "deployStart": "node ./bin/www"
+
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
