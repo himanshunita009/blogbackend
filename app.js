@@ -8,11 +8,6 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-
-
-
-
-
 /*My Own Require Module */
 require("./Database/databseInitilization");
 const bcrypt = require("bcryptjs");
@@ -36,6 +31,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
 /*Mongoose Database */
 
 
@@ -47,7 +46,7 @@ app.get('/checkAuth',auth,async (req,res) => {
   res.status(200).json({
     status: true,
     isAdmin: user.email === 'himanshucse.stud@nita.ac.in'? true:false,
-    user: user
+    user:  user
   });
 });
 
