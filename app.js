@@ -104,6 +104,7 @@ app.post("/login",async (req,res) => {
     }else {
       const token = await user.generateToken();
       console.log(token);
+      res.header('Access-Control-Allow-Credentials', true);
       res.cookie('jwt',token).status(201).json({
         status: true,
         isAdmin: user.email === 'himanshucse.stud@nita.ac.in'? true:false
